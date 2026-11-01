@@ -37,7 +37,7 @@ public class TareaController {
     }
 
     // Registrar tarea con proyecto y empleados existentes
-    @PostMapping("/")
+    @PostMapping
     public ResponseEntity<?> guardar(@RequestBody Tarea tarea) {
         try {
 
@@ -86,7 +86,7 @@ public class TareaController {
     }
 
     // Listar todas las tareas
-    @GetMapping("/")
+    @GetMapping
     public ResponseEntity<?> listar() {
         try {
             List<Tarea> tareas = tareaService.listar();

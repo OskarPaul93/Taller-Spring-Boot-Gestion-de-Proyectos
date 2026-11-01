@@ -27,7 +27,7 @@ public class EmpleadoController {
     }
 
     // Registrar empleado
-    @PostMapping("/")
+    @PostMapping
     public ResponseEntity<?> guardar(@RequestBody Empleado empleado) {
         try {
             Empleado respuesta = empleadoService.guardar(empleado);
@@ -40,7 +40,7 @@ public class EmpleadoController {
     }
 
     // Listar empleados
-    @GetMapping("/")
+    @GetMapping
     public ResponseEntity<?> listar() {
         try {
             List<Empleado> empleados = empleadoService.listar();

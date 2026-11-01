@@ -27,7 +27,7 @@ public class ProyectoController {
     }
 
     // Registrar proyecto
-    @PostMapping("/")
+    @PostMapping
     public ResponseEntity<?> guardar(@RequestBody Proyecto proyecto) {
         try {
             Proyecto respuesta = proyectoService.guardar(proyecto);
@@ -40,7 +40,7 @@ public class ProyectoController {
     }
 
     // Listar proyectos
-    @GetMapping("/")
+    @GetMapping
     public ResponseEntity<?> listar() {
         try {
             List<Proyecto> proyectos = proyectoService.listar();
