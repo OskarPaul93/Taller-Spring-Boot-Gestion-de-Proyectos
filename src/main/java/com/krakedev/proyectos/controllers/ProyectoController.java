@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,6 +28,7 @@ public class ProyectoController {
     }
 
     // Registrar proyecto
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     public ResponseEntity<?> guardar(@RequestBody Proyecto proyecto) {
         try {
@@ -40,6 +42,7 @@ public class ProyectoController {
     }
 
     // Listar proyectos
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @GetMapping
     public ResponseEntity<?> listar() {
         try {
@@ -53,6 +56,7 @@ public class ProyectoController {
     }
 
     // Buscar proyecto por ID
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @GetMapping("/{id}")
     public ResponseEntity<?> buscarPorId(@PathVariable Integer id) {
         try {
@@ -66,6 +70,7 @@ public class ProyectoController {
     }
 
     // Actualizar proyecto
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/{id}")
     public ResponseEntity<?> actualizar(
             @PathVariable Integer id,
@@ -81,6 +86,7 @@ public class ProyectoController {
     }
 
     // Eliminar proyecto
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{id}")
     public ResponseEntity<?> eliminar(@PathVariable Integer id) {
         try {
